@@ -1,6 +1,7 @@
 package beans;
 
 import java.util.Date;
+
 import java.util.UUID;
 
 import enums.Gender;
@@ -9,6 +10,7 @@ public class User {
 	
 	private UUID id;
 	private String username;
+	private String password;
 	private String name;
 	private String surName;
 	private Gender gender;
@@ -18,12 +20,13 @@ public class User {
 	private int points; //broj bodova ako je user kupac
 	private CustomerType customerType; //tip kupca ako je kupac
 	
-	public User( String username, String name, String surName, Gender gender, Date dateOfBirth, Role role,
+	public User( String username, String password, String name, String surName, Gender gender, Date dateOfBirth, Role role,
 			UUID restorantId, int points, CustomerType customerType) {
 		super();
 		this.id  =UUID.randomUUID();
 		this.username = username;
 		this.name = name;
+		this.password = password;
 		this.surName = surName;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
@@ -36,6 +39,7 @@ public class User {
 		super();
 		this.id = UUID.randomUUID();
 		this.username = "";
+		this.password = "";
 		this.name = "";
 		this.surName = "";
 		this.gender = null;
@@ -45,6 +49,13 @@ public class User {
 		this.points = 0;
 		this.customerType = null;
 
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public UUID getId() {
 		return id;
@@ -108,9 +119,10 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", name=" + name + ", surName=" + surName + ", gender="
-				+ gender + ", dateOfBirth=" + dateOfBirth + ", role=" + role + ", restorantId=" + restorantId
-				+ ", points=" + points + ", customerType=" + customerType + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", surName="
+				+ surName + ", gender=" + gender + ", dateOfBirth=" + dateOfBirth + ", role=" + role + ", restorantId="
+				+ restorantId + ", points=" + points + ", customerType=" + customerType + "]";
 	}
+	
 	
 }
